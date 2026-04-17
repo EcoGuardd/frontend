@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from '../components/Navbar';
 import SolutionSection from "../components/SolutionSection";
-import KeyFeatures from "../components/KeyFeatures";
+
 import StatsSection from "../components/StatsSection";
 import ForestModel from "../components/ForestModel";
 import Footer from "../components/Footer";
@@ -63,7 +63,6 @@ function HomePage() {
       </div>
 
       <SolutionSection />
-      <KeyFeatures />
       <StatsSection />
       <Footer />
     </>
