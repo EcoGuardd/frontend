@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.word {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.letter {
+  display: inline-block;
+  will-change: transform;
+}
+
+.mini-box {
+  padding: 14px 22px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #ffffff, #e6f4ea);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  font-weight: 600;
+  white-space: nowrap;
+}
