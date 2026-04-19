@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLayoutEffect } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -42,69 +43,33 @@ function SolutionSection() {
     },
   ];
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
 
-      const wrapper = document.querySelector(".scroll-wrapper");
-      const totalWidth = wrapper.scrollWidth;
+useLayoutEffect(() => {
+  const ctx = gsap.context(() => {
 
-      // HORIZONTAL SCROLL
-      gsap.to(".scroll-wrapper", {
-        x: () => -(totalWidth - window.innerWidth),
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".scroll-section",
-          start: "top top",
-          end: () => `+=${totalWidth - window.innerWidth}`,
-          scrub: 1,
-          pin: true,
-        },
-      });
+    const wrapper = document.querySelector(".scroll-wrapper");
+    const totalWidth = wrapper.scrollWidth;
 
-  
-
-      //  TEXT ANIMATION
-      gsap.from(".scroll-text", {
-        x: 400,
-        opacity: 0,
-        scrollTrigger: {
-          trigger: ".scroll-text",
-          start: "left center",
-          end: "left center",
-          scrub: 1,
-        },
-      });
-
-          gsap.to(".eco-sticker", {
-  y: -10,
-  repeat: -1,
-  yoyo: true,
-  duration: 2,
-  ease: "power1.inOut",
-});
-
-gsap.to(".rotating-icon", {
-  rotation: 360,
-  repeat: -1,
-  duration: 2,
-  ease: "linear",
-});
-
-      //  MINI BOXES
-      gsap.from(".mini-box", {
-        x: 200,
-        opacity: 0,
-        stagger: 0.2,
-        scrollTrigger: {
-          trigger: ".mini-box",
-          start: "left center",
-        },
-      });
-
+    gsap.to(".scroll-wrapper", {
+      x: () => -(totalWidth - window.innerWidth),
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".scroll-section",
+        start: "top top",
+        end: () => `+=${totalWidth - window.innerWidth}`,
+        scrub: 1,
+        pin: true,
+      },
     });
 
-    return () => ctx.revert();
-  }, []);
+  });
+
+  return () => {
+    ctx.revert(); // ✅ removes GSAP animations
+    ScrollTrigger.getAll().forEach(t => t.kill()); // ✅ kills all scroll triggers
+  };
+
+}, []);
 
   return (
     <div className="scroll-section overflow-hidden bg-[#f6f6f4] py-20 min-h-screen">

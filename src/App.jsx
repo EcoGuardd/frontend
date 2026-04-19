@@ -9,6 +9,7 @@ import MapPage from "./pages/MapPage";
 import Dashboard from "./pages/Dashboard";
 import Planner from "./pages/Planner";
 import Impact from "./pages/Impact";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const [count, setCount] = useState(0)
@@ -16,6 +17,7 @@ function App() {
   return (
     <>
      
+     <ScrollToTop />  
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/map" element={<MapPage />} />
