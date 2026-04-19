@@ -8,7 +8,14 @@ import ForestModel from "../components/ForestModel";
 import Footer from "../components/Footer";
 
 
+
+
+
 function HomePage() {
+
+
+
+
   return (
     <>
     {/* Home Section  */}
@@ -41,7 +48,7 @@ function HomePage() {
 
             <div className="flex gap-4">
               <Link to="/map">
-                <button className="bg-yellow-400 px-6 py-3 rounded-lg text-green-900 hover:bg-yellow-500 transition">
+                <button className="bg-yellow-400 px-6 py-3 rounded-lg text-green-900 hover:bg-yellow-500 transition" >
                   Explore Map
                 </button>
               </Link>
