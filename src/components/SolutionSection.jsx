@@ -50,6 +50,7 @@ useLayoutEffect(() => {
     const wrapper = document.querySelector(".scroll-wrapper");
     const totalWidth = wrapper.scrollWidth;
 
+    // HORIZONTAL SCROLL
     gsap.to(".scroll-wrapper", {
       x: () => -(totalWidth - window.innerWidth),
       ease: "none",
@@ -62,11 +63,19 @@ useLayoutEffect(() => {
       },
     });
 
+    //  ROTATING ICON 
+    gsap.to(".rotating-icon", {
+      rotate: 360,
+      duration: 2,
+      repeat: -1,
+      ease: "linear",
+    });
+
   });
 
   return () => {
-    ctx.revert(); // ✅ removes GSAP animations
-    ScrollTrigger.getAll().forEach(t => t.kill()); // ✅ kills all scroll triggers
+    ctx.revert();
+    ScrollTrigger.getAll().forEach(t => t.kill());
   };
 
 }, []);
