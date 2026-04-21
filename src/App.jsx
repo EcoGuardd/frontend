@@ -10,14 +10,14 @@ import Dashboard from "./pages/Dashboard";
 import Planner from "./pages/Planner";
 import Impact from "./pages/Impact";
 import ScrollToTop from "./components/ScrollToTop";
+import { GlobalProvider } from './context/GlobalContext';
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-     
-     <ScrollToTop />  
+    <GlobalProvider>
+      <ScrollToTop />  
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/map" element={<MapPage />} />
@@ -25,7 +25,7 @@ function App() {
         <Route path="/planner" element={<Planner />} />
         <Route path="/impact" element={<Impact />} />
       </Routes>
-    </>
+    </GlobalProvider>
   )
 }
 

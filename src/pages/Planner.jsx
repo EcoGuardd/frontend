@@ -6,6 +6,7 @@ import { FiCpu, FiSend, FiMinimize2, FiMaximize2, FiWind, FiDroplet, FiActivity,
 import CountUpModule from 'react-countup';
 const CountUp = CountUpModule.default || CountUpModule;
 import gsap from 'gsap';
+import SatelliteTimeline from '../components/SatelliteTimeline';
 
 
 function Planner() {
@@ -391,6 +392,11 @@ function Planner() {
                 <span className="text-green-600">Mass Scale</span>
                 <span>Industrial Sector</span>
               </div>
+            </div>
+
+            {/* Satellite Analysis Timeline */}
+            <div className="planner-card">
+              <SatelliteTimeline coordinates={region.coordinates} areaHectares={area} />
             </div>
 
             {/* Species Section */}

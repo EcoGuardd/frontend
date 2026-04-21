@@ -5,6 +5,7 @@ import { MapContainer, TileLayer, Circle, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { getMapData, analyzeLocation } from "../utils/api";
 import { FiSearch, FiTarget, FiX, FiMapPin, FiActivity } from "react-icons/fi";
+import RiskZoneLayer from "../components/RiskZoneLayer";
 
 // Component to handle map centering
 function MapRecenter({ center }) {
@@ -306,6 +307,8 @@ function MapPage() {
             />
 
             <MapRecenter center={center} />
+            
+            <RiskZoneLayer />
 
             {zones.map((zone, i) => (
               <Circle
