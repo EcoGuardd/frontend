@@ -46,6 +46,9 @@ function Planner() {
       if (data) {
         // Fetch initial Suggestions first so AI has the data
         const sug = await getReforestationSuggestions({
+          region: regionId !== 'searched' ? regionId : undefined,
+          regionName: data.name,
+          country: data.country,
           soilType: data.soilType || 'loam',
           climate: data.climate || (data.currentTemperature > 25 ? 'tropical' : 'temperate'),
           areaToRestore: area
@@ -73,6 +76,9 @@ function Planner() {
     const updateStats = async () => {
       if (!region) return;
       const sug = await getReforestationSuggestions({
+        region: regionId !== 'searched' ? regionId : undefined,
+        regionName: region.name,
+        country: region.country,
         soilType: region.soilType || 'loam',
         climate: region.climate || (region.currentTemperature > 25 ? 'tropical' : 'temperate'),
         areaToRestore: area
@@ -136,6 +142,7 @@ function Planner() {
     
     // Fetch initial Suggestions first
     const sug = await getReforestationSuggestions({
+      regionName: manualRegion.name,
       soilType: manualRegion.soilType,
       climate: manualRegion.climate,
       areaToRestore: area
